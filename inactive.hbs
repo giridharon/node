@@ -1,0 +1,46 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Inactive Users</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-md-4"><h1>Users</h1></div>
+    <div class="col-md-4 d-flex justify-content-end">
+        <a href="/adduser" type="button" class="btn btn-primary align-self-center">+ Add user</a>
+    </div>
+</div>
+{{#if alert}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{alert}}
+  
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+<table class="table" padding:8px>
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col tr-0">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows}}
+    <tr>
+    <th scope="row">{{this.id}}</th>
+      <td>{{this.first_name}}</td>
+      <td>{{this.last_name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
+      <td class="text-end">
+          <a href="/activateuser/{{this.id}}" type="button" class="btn btn-dark btn-small"><i class="bi bi-eye"></i> Activate User</a>
+          <a href="/deleteper/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete Permanently</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
